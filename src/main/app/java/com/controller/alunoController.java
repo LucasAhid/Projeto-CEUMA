@@ -3,6 +3,11 @@ package com.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.Interface.Aluno;
+import com.Interface.Curso;
+import com.Interface.CursoRepository;
+import com.services.AlunoService;
+
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoController {

@@ -1,7 +1,11 @@
-import cors from "cors"
 import express from "express"
-
+const express = require("express")
 const app = express()
-app.use(express.json())
-app.use(cors())
-app.listen(3333, () => console.log("Server is running on port 3333"))
+const alunoRoutes = require("./routes/alunoRoutes")
+
+app.use("/api/alunos", alunoRoutes)
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`)
+})

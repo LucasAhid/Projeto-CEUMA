@@ -1,3 +1,5 @@
+package com.controller;
+
 @RestController
 @RequestMapping("/api/cursos")
 public class CursoController {

@@ -1,4 +1,4 @@
-package service;
+package com.services;
 
 @Service
 public class AlunoService {
