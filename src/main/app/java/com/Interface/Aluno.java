@@ -1,5 +1,7 @@
 import java.util.List;
 
+
+@Entity
 public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 
+
+@Entity
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

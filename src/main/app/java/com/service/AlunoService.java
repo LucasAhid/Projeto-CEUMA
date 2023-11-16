@@ -1,6 +1,7 @@
+package service;
 
 @Service
-public class alunoService {
+public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
