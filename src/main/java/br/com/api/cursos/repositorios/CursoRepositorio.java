@@ -14,8 +14,4 @@ public interface CursoRepositorio extends JpaRepository<ICurso, Long> {
     Optional<ICurso> findById(Long cursoId);
 
     List<ICurso> findAll();
-
-    ICurso save(ICurso curso);
-
-    void deleteById(Long id);
 }

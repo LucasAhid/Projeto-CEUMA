@@ -56,7 +56,7 @@ public class CursoServico {
                     return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
                 }   
                     else{
-                         return new ResponseEntity<ICurso>(cursoRepositorio.save(cursoAtualizado), HttpStatus.CREATED);
+                         return new ResponseEntity<ICurso>(cursoRepositorio.save(cursoAtualizado), HttpStatus.OK);
                     }
     }
 }

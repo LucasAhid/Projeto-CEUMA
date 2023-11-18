@@ -25,9 +25,12 @@ public class AlunoServico {
     }
 
     public IAluno alterarAluno(Long id, IAluno alunoAtualizado) {
-        return alunoAtualizado;    
+        if(id != null){         
+            return alunoRepositorio.save(alunoAtualizado);
+        }
+        return alunoAtualizado;
     }
-
+    
     public  ResponseEntity<?> cadastrarAluno(IAluno aluno) {
             if(aluno.getCep().equals("")){
                 resp.setMensagem("Por favor preencha o seu CEP");            
