@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Teste CORS</title>
+
+      <script>
+
+          fetch('http://localhost:8080/listarCursos')   
+          .then(curso => curso.json())  
+          .then(retorno => curso.log(retorno))  
+
+          fetch('http://localhost:8080/cadastrarCurso')   
+          .then(curso => curso.json())  
+          .then(retorno => curso.log(retorno)) 
+          
+          fetch('http://localhost:8080/{id}')   
+          .then(curso => curso.json())  
+          .then(retorno => curso.log(retorno))
+          
+          fetch('http://localhost:8080/por-curso/{cursoId}')   
+          .then(aluno => aluno.json())  
+          .then(retorno => aluno.log(retorno))
+          
+          fetch('http://localhost:8080/{id}')   
+          .then(aluno => aluno.json())  
+          .then(retorno => aluno.log(retorno)) 
+
+      </script>
+
+  </head>
+  <body>
+      
+  </body>
+  </html>
