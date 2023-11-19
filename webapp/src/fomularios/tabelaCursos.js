@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faList } from '@fortawesome/free-solid-svg-icons';
 import './Form.css'
+
+
 import Modal from 'react-modal';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import ListarAlunos from '../paginas/listarAlunos';
@@ -36,6 +40,7 @@ function TabelaCursos() {
           <th>Nome</th>
           <th>Carga Horária</th>
           <th>Data do Cadastro</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -46,23 +51,20 @@ function TabelaCursos() {
           <td>40 horas</td>
           <td>2023-11-19</td>
           <td>
-          <button onClick={openModal}>
-                <FontAwesomeIcon icon={faListAlt} />
-              </button>
-              <button onClick={() => console.log('Editar Curso clicado')}>
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button onClick={() => console.log('Editar Excluir clicado')}>
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+            <button onClick={openModal} title="Listar Alunos">
+              <FontAwesomeIcon icon={faList} />
+            </button>
+            <button onClick={() => console.log('Editar Curso clicado')} title="Editar Curso">
+              <FontAwesomeIcon icon={faEdit} />
+            </button>
+            <button onClick={() => console.log('Excluir Curso clicado')} title="Excluir Curso">
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
           </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan="5">
-            {/* <button onClick={openModal}>Listar Alunos</button>
-            <button onClick={() => console.log('Editar Curso clicado')}>Editar Curso</button> */}
           <ReactHTMLTableToExcel
             id="botaoExportarModal"
             className="download-table-xls-button"
@@ -71,7 +73,6 @@ function TabelaCursos() {
             sheet="tabelaCursos"
             buttonText="Exportar para Excel"
           />
-          </td>
         </tr>
       </tfoot>
         

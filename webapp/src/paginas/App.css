@@ -38,16 +38,16 @@ th, td {
 }
 
 th {
-  background-color: #095d91; /* Azul claro para o cabeçalho da tabela */
+  background-color: #095d91; 
   color: black;
 }
 
 
 tr:nth-child(even) {
-  background-color: #f2f2f2; /* Fundo branco para linhas pares */
+  background-color: #f2f2f2; 
 }
 
-/* Estilizando as células das linhas ímpares da tabela */
+
 tr:nth-child(odd) {
-  background-color: white; /* Fundo branco para linhas ímpares */
+  background-color: white; 
 }
