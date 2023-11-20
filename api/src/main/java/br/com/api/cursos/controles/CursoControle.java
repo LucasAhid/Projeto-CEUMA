@@ -1,5 +1,7 @@
 package br.com.api.cursos.controles;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,11 +51,11 @@ public class CursoControle {
         return cursoServico.alterarCurso(id, cursoAtualizado);
     }
     
-    // @GetMapping("/{id}")
-    // public ResponseEntity<ICurso> buscarCursoPorId(@PathVariable Long id) {
-    //     ICurso curso = cursoServico.buscarCursoPorId(id);
-    //     return ResponseEntity.ok(curso);
-    // }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<ICurso>> buscarCursoPorId(@PathVariable Long id) {
+        Optional<ICurso> curso = cursoServico.buscarCursoPorId(id);
+        return ResponseEntity.ok(curso);
+     }
 }
 
 
