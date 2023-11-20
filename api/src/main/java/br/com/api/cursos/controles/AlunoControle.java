@@ -21,7 +21,7 @@ import br.com.api.cursos.repositorios.CursoRepositorio;
 import br.com.api.cursos.servicos.AlunoServico;
 
 
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoControle {

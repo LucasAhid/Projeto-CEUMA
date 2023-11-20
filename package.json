@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "react-input-mask": "^2.0.4",
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^5.2.0"
-  }
-}

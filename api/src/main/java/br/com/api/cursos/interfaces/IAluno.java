@@ -1,17 +1,17 @@
 package br.com.api.cursos.interfaces;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "aluno")
 public class IAluno {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,11 +21,11 @@ public class IAluno {
     private String endereco;
     private String cep;
     private String email;
-  
     private String telefone;
+
     @ManyToOne
     @JoinColumn(name = "curso_id")
-    private ICurso curso; 
+    private ICurso curso;
    
     public Long getId() {
         return id;

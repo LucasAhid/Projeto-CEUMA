@@ -1,4 +1,4 @@
-### Spring Boot ###
+HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -31,21 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### React ###
-node_modules/
-build/
-.DS_Store
-
-# Arquivos de ambiente
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Cache de cobertura de teste
-coverage/
-
-# Dependências do Yarn
-.yarn
-.yarn-integrity
