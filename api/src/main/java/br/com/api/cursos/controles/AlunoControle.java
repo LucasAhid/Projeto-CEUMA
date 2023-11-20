@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import br.com.api.cursos.repositorios.CursoRepositorio;
 import br.com.api.cursos.servicos.AlunoServico;
 
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoControle {
@@ -53,13 +54,13 @@ public class AlunoControle {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoAluno);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/remover{id}")
     public ResponseEntity<Void> removerAluno(@PathVariable Long id) {
         alunoServico.removerAluno(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/alterar{id}")
     public ResponseEntity<IAluno> alterarAluno(@PathVariable Long id, @RequestBody IAluno alunoAtualizado) {
         IAluno aluno = alunoServico.alterarAluno(id, alunoAtualizado);
         if (aluno != null) {

@@ -1,37 +1,49 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Teste CORS</title>
+<html lang="en">
 
-      <script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste CORS</title>
+</head>
 
-          fetch('http://localhost:8080/listarCursos')   
-          .then(curso => curso.json())  
-          .then(retorno => curso.log(retorno))  
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://localhost:8080/api/cursos/listarCursos')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
 
-          fetch('http://localhost:8080/cadastrarCurso')   
-          .then(curso => curso.json())  
-          .then(retorno => curso.log(retorno)) 
-          
-          fetch('http://localhost:8080/{id}')   
-          .then(curso => curso.json())  
-          .then(retorno => curso.log(retorno))
-          
-          fetch('http://localhost:8080/por-curso/{cursoId}')   
-          .then(aluno => aluno.json())  
-          .then(retorno => aluno.log(retorno))
-          
-          fetch('http://localhost:8080/{id}')   
-          .then(aluno => aluno.json())  
-          .then(retorno => aluno.log(retorno)) 
+            fetch('http://localhost:8080/api/cursos/cadastrarCurso')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
 
-      </script>
+            fetch('http://localhost:8080/api/cursos/{id}')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
+            
+            // fetch('http://localhost:8080/api/cursos/alterar{id}')
+            //     .then(response => response.json())
+            //     .then(retorno => console.log(retorno));
 
-  </head>
-  <body>
-      
-  </body>
-  </html>
+            // fetch('http://localhost:8080/api/cursos/buscar{id}')
+            //     .then(response => response.json())
+            //     .then(retorno => console.log(retorno));
+
+                fetch('http://localhost:8080/api/alunos/por-curso/{cursoId}')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
+
+            fetch('http://localhost:8080/api/alunos/remover{id}')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
+                
+            fetch('http://localhost:8080/api/alunos/alterar{id}')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
+        });
+    </script>
+</body>
+
+</html>

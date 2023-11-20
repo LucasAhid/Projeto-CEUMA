@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import br.com.api.cursos.servicos.CursoServico;
 
 
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/cursos")
 public class CursoControle {
@@ -46,7 +47,7 @@ public class CursoControle {
         cursoServico.removerCurso(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/id}")
     public ResponseEntity<?> alterarCurso(@PathVariable Long id, @RequestBody ICurso cursoAtualizado) {
         return cursoServico.alterarCurso(id, cursoAtualizado);
     }

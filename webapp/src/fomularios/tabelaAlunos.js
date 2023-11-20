@@ -9,8 +9,7 @@ function TabelaAlunos(cursoSelecionadoId){
             .then((retorno) => retorno.json())
             .then((retorno_json) => setAlunos(retorno_json));
         }
-      }, [cursoSelecionadoId]);
-      
+      }, [cursoSelecionadoId])     
       
     return (
        <table>
