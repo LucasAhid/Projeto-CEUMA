@@ -1,5 +1,7 @@
 package br.com.api.cursos.servicos;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,9 +41,17 @@ public class CursoServico {
                     }
     }
 
-    public void removerCurso(Long id) {
-        cursoRepositorio.deleteById(id);
+    public ResponseEntity<IResposta> removerCurso(Long id) {
+        Optional<ICurso> cursoExistente = cursoRepositorio.findById(id);
+        if (cursoExistente.isPresent()) {
+            cursoRepositorio.deleteById(id);
+            return new ResponseEntity<>(resp, HttpStatus.OK);
+        } else {
+            resp.setMensagem("Curso não encontrado");
+            return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
+        }
     }
+    
 
     public ResponseEntity<?> alterarCurso(Long id, ICurso cursoAtualizado) {
          if(cursoAtualizado.getCodigo().equals("")){
@@ -60,7 +70,10 @@ public class CursoServico {
                          return new ResponseEntity<ICurso>(cursoRepositorio.save(cursoAtualizado), HttpStatus.OK);
                     }
     }
-    public ResponseEntity<ICurso> buscarCursoPorId(@PathVariable Long id) {
-        return  cursoRepositorio.buscarCursoPorId(id);
+    
+    public Optional<ICurso> buscarCursoPorId(Long id) {
+        return cursoRepositorio.findById(id);
     }
+    
+
 }
