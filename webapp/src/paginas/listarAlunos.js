@@ -13,7 +13,7 @@ function ListarAlunos() {
   return (
     <div>
       <TabelaAlunos />
-      <button onClick={exibirFormulario}>Adicionar Aluno</button>
+      <button onClick={exibirFormulario}>Novo Aluno</button>
 
       {formularioVisivel && <FormularioAluno />}
 
@@ -23,7 +23,7 @@ function ListarAlunos() {
         table="tabelaAlunos"
         filename="tabelaAlunos"
         sheet="tabelaAlunos"
-        buttonText="Exportar para Excel"
+        buttonText="Exportar Excel"
       />
     </div>
   );

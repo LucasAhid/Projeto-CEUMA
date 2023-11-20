@@ -1,4 +1,6 @@
-function FormularioAluno({botao}){
+import './Form.css'
+
+function FormularioAluno(){
     return (
         <form>
             <h1>Formulario do Aluno</h1>
@@ -10,16 +12,11 @@ function FormularioAluno({botao}){
             <input type='text' className='form-control' placeholder ='CEP' id="cepAluno" pattern="[0-9]*" 
             OnKeyPress="formatar('#####-###',this)"/>
             <input type='text' className='form-control' placeholder ='Email' id="emailAluno"/>
-        <div> {botao
-             ?
-             <input type='button' value='Cadastrar'/>
-             :
-             <div>
+        <div> 
+             <input type='button' value='Cadastrar'/>             
              <input type='button' value='Cadastrar'/>
              <input type='button' value='Limpar'/>
              <input type='button' value='Cancelar'/>
-             </div> 
-            }
         </div>    
         </form>
         )

@@ -1,4 +1,17 @@
-function TabelaAlunos(){
+import React, { useState, useEffect } from 'react';
+
+function TabelaAlunos(cursoSelecionadoId){
+    
+    const [alunos, setAlunos] = useState([])
+    useEffect(() => {
+        if (cursoSelecionadoId) {
+          fetch(`http:localhost:8080/por-curso/${cursoSelecionadoId}`)
+            .then((retorno) => retorno.json())
+            .then((retorno_json) => setAlunos(retorno_json));
+        }
+      }, [cursoSelecionadoId]);
+      
+      
     return (
        <table>
         <thead>
@@ -13,17 +26,19 @@ function TabelaAlunos(){
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+        {alunos.map(aluno => (
+          <tr key={aluno.id}>
+            <td>{aluno.id}</td>
+            <td>{aluno.codigo}</td>
+            <td>{aluno.nome}</td>
+            <td>{aluno.cpf}</td>
+            <td>{aluno.endereco}</td>
+            <td>{aluno.cep}</td>
+            <td>{aluno.email}</td>
+          </tr>
+        ))}
         </tbody>
-       </table>
+        </table>
         )
 }
 

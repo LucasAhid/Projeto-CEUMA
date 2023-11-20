@@ -9,9 +9,12 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import ListarAlunos from '../paginas/listarAlunos';
 
 function TabelaCursos() {
+   
   //UseState
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [cursos, setCursos] = useState([])
+  const [cursoSelecionadoId, setCursoSelecionadoId] = useState(null);
+  const [objCurso, setObjCurso] = useState(curso);
   
   //UseEffect
   useEffect(() => {
@@ -21,14 +24,14 @@ function TabelaCursos() {
   }, []);
 
   //Modal
-  const openModal = () => {
+  const openModal = (cursoId) => {
+    setCursoSelecionadoId(cursoId);
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
 
 
   return (
@@ -44,14 +47,15 @@ function TabelaCursos() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>CUR001</td>
-          <td>Curso de Exemplo</td>
-          <td>40 horas</td>
-          <td>2023-11-19</td>
+      {cursos.map(curso => (
+        <tr key={curso.id}>
+          <td>{curso.id}</td>
+          <td>{curso.codigo}</td>
+          <td>{curso.nome}</td>
+          <td>{curso.cargaHoraria}</td>
+          <td>{curso.dataCadastro}</td>
           <td>
-            <button onClick={openModal} title="Listar Alunos">
+            <button onClick={() => openModal(curso.id)} title="Listar Alunos">
               <FontAwesomeIcon icon={faList} />
             </button>
             <button onClick={() => console.log('Editar Curso clicado')} title="Editar Curso">
@@ -62,6 +66,8 @@ function TabelaCursos() {
             </button>
           </td>
         </tr>
+      ))}
+
       </tbody>
       <tfoot>
         <tr>
