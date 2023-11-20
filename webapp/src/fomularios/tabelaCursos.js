@@ -14,8 +14,7 @@ function TabelaCursos() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [cursos, setCursos] = useState([])
   const [cursoSelecionadoId, setCursoSelecionadoId] = useState(null);
-  const [objCurso, setObjCurso] = useState(curso);
-  
+    
   //UseEffect
   useEffect(() => {
     fetch("http:localhost:8080/listarCursos")
