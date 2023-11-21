@@ -10,9 +10,4 @@ import br.com.api.cursos.interfaces.ICurso;
 
 @Repository
 public interface CursoRepositorio extends JpaRepository<ICurso, Long> {
-
-    Optional<ICurso> findById(Long id);
-
-    List<ICurso> findAll();
-
 }

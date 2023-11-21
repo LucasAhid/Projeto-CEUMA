@@ -53,22 +53,21 @@ public class CursoServico {
     
 
     public ResponseEntity<?> alterarCurso(Long id, ICurso cursoAtualizado) {
-         if(cursoAtualizado.getCodigo().equals("")){
-            resp.setMensagem("O CODIGO do curso é obrigatório");            
+        if (cursoAtualizado.getCodigo().equals("")) {
+            resp.setMensagem("O CODIGO do curso é obrigatório");
             return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
+        } else if (cursoAtualizado.getNome().equals("")) {
+            resp.setMensagem("O NOME do curso é obrigatório");
+            return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
+        } else if (cursoAtualizado.getCargaHoraria() == null) {
+            resp.setMensagem("A CARGA HORÁRIA do curso é obrigatório");
+            return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
+        } else {
+            cursoAtualizado.setId(id); // Certifique-se de que o ID está definido
+            return new ResponseEntity<>(cursoRepositorio.save(cursoAtualizado), HttpStatus.OK);
         }
-            else if(cursoAtualizado.getNome().equals("")){
-                resp.setMensagem("O NOME do curso é obrigatório");            
-                return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-            }
-                else if(cursoAtualizado.getCargaHoraria() == null){
-                    resp.setMensagem("A CARGA HORÁRIA do curso é obrigatório");            
-                    return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }   
-                    else{
-                         return new ResponseEntity<ICurso>(cursoRepositorio.save(cursoAtualizado), HttpStatus.OK);
-                    }
     }
+        
     
     public Optional<ICurso> buscarCursoPorId(Long id) {
         return cursoRepositorio.findById(id);
