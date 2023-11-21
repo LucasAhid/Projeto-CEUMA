@@ -22,7 +22,7 @@ import br.com.api.cursos.repositorios.CursoRepositorio;
 import br.com.api.cursos.servicos.AlunoServico;
 
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoControle {
@@ -48,19 +48,19 @@ public class AlunoControle {
         }
     }
 
-    @PostMapping
+    @PostMapping("/cadastrarAluno")
     public ResponseEntity<?> cadastrarAluno(@RequestBody IAluno aluno) {
         ResponseEntity<?> novoAluno = alunoServico.cadastrarAluno(aluno);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoAluno);
     }
 
-    @DeleteMapping("/remover{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerAluno(@PathVariable Long id) {
         alunoServico.removerAluno(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/alterar{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<IAluno> alterarAluno(@PathVariable Long id, @RequestBody IAluno alunoAtualizado) {
         IAluno aluno = alunoServico.alterarAluno(id, alunoAtualizado);
         if (aluno != null) {

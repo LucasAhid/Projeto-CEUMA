@@ -22,26 +22,19 @@
             fetch('http://localhost:8080/api/cursos/{id}')
                 .then(response => response.json())
                 .then(retorno => console.log(retorno));
-            
-            // fetch('http://localhost:8080/api/cursos/alterar{id}')
-            //     .then(response => response.json())
-            //     .then(retorno => console.log(retorno));
 
-            // fetch('http://localhost:8080/api/cursos/buscar{id}')
-            //     .then(response => response.json())
-            //     .then(retorno => console.log(retorno));
-
-                fetch('http://localhost:8080/api/alunos/por-curso/{cursoId}')
+            fetch('http://localhost:8080/api/alunos/por-curso/{cursoId}')
                 .then(response => response.json())
                 .then(retorno => console.log(retorno));
 
-            fetch('http://localhost:8080/api/alunos/remover{id}')
+            fetch('http://localhost:8080/api/alunos/cadastrarAluno')
+                .then(response => response.json())
+                .then(retorno => console.log(retorno));
+            
+                fetch('http://localhost:8080/api/alunos/{id}')
                 .then(response => response.json())
                 .then(retorno => console.log(retorno));
                 
-            fetch('http://localhost:8080/api/alunos/alterar{id}')
-                .then(response => response.json())
-                .then(retorno => console.log(retorno));
         });
     </script>
 </body>

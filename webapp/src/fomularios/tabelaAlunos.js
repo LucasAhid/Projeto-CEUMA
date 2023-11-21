@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-function TabelaAlunos(cursoSelecionadoId){
-    
-    const [alunos, setAlunos] = useState([])
-    useEffect(() => {
-        if (cursoSelecionadoId) {
-          fetch(`http://localhost:8080/api/alunos/por-curso/${cursoSelecionadoId}`)
-            .then((retorno) => retorno.json())
-            .then((retorno_json) => setAlunos(retorno_json));
-        }
-      }, [cursoSelecionadoId])     
-      
-    return (
-       <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Endereço</th>
-                <th>CEP</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-        {alunos.map(aluno => (
+function TabelaAlunos({ alunosDoCurso }) {
+  const [alunos, setAlunos] = useState([]);
+
+  useEffect(() => {
+    setAlunos(alunosDoCurso);
+  }, [alunosDoCurso]);
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Endereço</th>
+          <th>CEP</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+      {alunos && alunos.map((aluno) => (
           <tr key={aluno.id}>
             <td>{aluno.id}</td>
             <td>{aluno.codigo}</td>
@@ -36,9 +32,9 @@ function TabelaAlunos(cursoSelecionadoId){
             <td>{aluno.email}</td>
           </tr>
         ))}
-        </tbody>
-        </table>
-        )
+      </tbody>
+    </table>
+  );
 }
 
 export default TabelaAlunos;

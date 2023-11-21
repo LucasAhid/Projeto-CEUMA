@@ -31,46 +31,11 @@ public class AlunoServico {
         return alunoAtualizado;
     }
     
-    public  ResponseEntity<?> cadastrarAluno(IAluno aluno) {
-            if(aluno.getCep().equals("")){
-                resp.setMensagem("Por favor preencha o seu CEP");            
-                return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-            }
-                else if(aluno.getNome().equals("")){
-                   resp.setMensagem("Por favor preencha o seu NOME");           
-                    return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getCodigo().equals("")){
-                     resp.setMensagem("Por favor preencha o seu CÓDIGO");           
-                     return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getCpf().equals("")){
-                     resp.setMensagem("Por favor preencha o seu CPF");           
-                     return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getEmail().equals("")){
-                     resp.setMensagem("Por favor preencha o seu EMAIL");           
-                     return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getEndereco().equals("")){
-                     resp.setMensagem("Por favor preencha o seu ENDEREÇO");           
-                     return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getTelefone().equals("")){
-                      resp.setMensagem("Por favor preencha o seu TELEFONE");           
-                      return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }
-                else if(aluno.getCurso().getNome().equals("")){
-                      resp.setMensagem("Por favor insira pelo menos 1 CURSO");           
-                      return new ResponseEntity<IResposta>(resp, HttpStatus.BAD_REQUEST);
-                }  
-                else{
-                    return new ResponseEntity<IAluno>(alunoRepositorio.save(aluno), HttpStatus.CREATED);
-                }
+    public ResponseEntity<?> cadastrarAluno(IAluno aluno) {
+        return new ResponseEntity<IAluno>(alunoRepositorio.save(aluno), HttpStatus.CREATED);
     }
 
     public List<IAluno> listarAlunosPorCurso(ICurso curso) {
-        //return null;
         return alunoRepositorio.findByCurso(curso);
     }
 }
